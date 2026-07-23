@@ -1,5 +1,7 @@
 # Autodrive Heterogeneous Scheduler
 
+[![Tests](https://github.com/qinqin423/autodrive-heterogeneous-scheduler/actions/workflows/tests.yml/badge.svg)](https://github.com/qinqin423/autodrive-heterogeneous-scheduler/actions/workflows/tests.yml)
+
 A reproducible discrete-event simulation project for scheduling autonomous-driving AI services on heterogeneous CPU, GPU, and NPU resources.
 
 The project is being developed as an engineering portfolio and research prototype. Version `v0.1` provides the minimum simulation loop, two baseline schedulers, configuration validation, CSV/JSON outputs, and automated tests.
