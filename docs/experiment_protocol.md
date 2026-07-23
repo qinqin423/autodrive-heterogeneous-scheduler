@@ -9,6 +9,22 @@
 - Report mean and standard deviation when random jitter is enabled.
 - Clearly label synthetic device profiles and measured device profiles.
 
+## Controlled variable experiments
+
+### high_load vs emergency_overload
+
+These two scenarios form a controlled variable experiment:
+
+- **high_load**: Deterministic near-saturation background workload without emergency requests.
+- **emergency_overload**: Same background workload with periodic emergency obstacle detection requests added starting at 200ms.
+
+The only major change between the two scenarios is the addition of the emergency perception workload. This allows measuring the scheduler's ability to handle urgent tasks under high load conditions.
+
+### Measurement notes
+
+- Wall-clock scheduling overhead should be reported with mean and standard deviation across multiple runs.
+- Deterministic scenarios (jitter_ms: 0) produce identical task streams and simulated-time/deadline metrics on repeated runs; wall-clock scheduler-overhead measurements are excluded from this guarantee.
+
 ## Planned evaluation matrix
 
 - Scenarios: cruise, parking, emergency burst

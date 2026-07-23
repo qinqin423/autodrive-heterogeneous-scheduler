@@ -1,0 +1,23 @@
+name: high_load
+description: Deterministic near-saturation background workload without emergency requests.
+duration_ms: 1000
+random_seed: 42
+devices_file: ../devices.yaml
+services_file: ../services.yaml
+workloads:
+  - service: object_detection
+    start_ms: 0
+    period_ms: 30
+    jitter_ms: 0
+  - service: monocular_3d_detection
+    start_ms: 5
+    period_ms: 65
+    jitter_ms: 0
+  - service: object_tracking
+    start_ms: 10
+    period_ms: 18
+    jitter_ms: 0
+  - service: lane_detection
+    start_ms: 15
+    period_ms: 35
+    jitter_ms: 0

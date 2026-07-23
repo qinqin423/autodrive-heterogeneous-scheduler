@@ -36,10 +36,22 @@ autodrive-sim \
 pytest -q
 ```
 
-Run both v0.1 baselines:
+Run Fixed/FIFO/EDF baselines:
 
 ```bash
 python scripts/run_baselines.py
+```
+
+Run high-load scenario:
+
+```bash
+python scripts/run_baselines.py --scenario configs/scenarios/high_load.yaml
+```
+
+Run emergency overload scenario:
+
+```bash
+python scripts/run_baselines.py --scenario configs/scenarios/emergency_overload.yaml
 ```
 
 ## Repository layout
@@ -61,7 +73,9 @@ docs/          Design notes and experiment protocol
 - `v0.4`: CPU/GPU model profiling and trace-driven experiments
 - `v1.0`: Complete paper experiments, documentation, and portfolio release
 
-**v0.2 progress**: EDF baseline implemented; overload scenarios and benchmark reporting are planned.
+**v0.2 progress**: EDF baseline and deterministic high-load/emergency scenarios implemented; benchmark reporting is planned.
+
+**Reproducibility**: Simulation time, task streams, and deadline metrics are deterministic under fixed configurations and random seeds. Scheduler overhead is measured from actual wall-clock time and may vary across machines and runs.
 
 ## Research integrity and public release
 
