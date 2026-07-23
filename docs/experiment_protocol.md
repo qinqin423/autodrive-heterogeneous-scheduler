@@ -25,6 +25,12 @@ The only major change between the two scenarios is the addition of the emergency
 - Wall-clock scheduling overhead should be reported with mean and standard deviation across multiple runs.
 - Deterministic scenarios (jitter_ms: 0) produce identical task streams and simulated-time/deadline metrics on repeated runs; wall-clock scheduler-overhead measurements are excluded from this guarantee.
 
+### Benchmark report conventions
+
+- The public benchmark report (docs/benchmark_results.md) excludes wall-clock scheduler overhead to ensure deterministic reproducibility.
+- Scheduler overhead measurements require separate repeated runs to report mean and standard deviation.
+- The current benchmark uses synthetic execution profiles; measured hardware profiles will be added in future versions.
+
 ## Planned evaluation matrix
 
 - Scenarios: cruise, parking, emergency burst

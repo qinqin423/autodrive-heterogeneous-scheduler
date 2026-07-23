@@ -73,9 +73,22 @@ docs/          Design notes and experiment protocol
 - `v0.4`: CPU/GPU model profiling and trace-driven experiments
 - `v1.0`: Complete paper experiments, documentation, and portfolio release
 
-**v0.2 progress**: EDF baseline and deterministic high-load/emergency scenarios implemented; benchmark reporting is planned.
+**v0.2 progress**: EDF baseline, deterministic high-load/emergency scenarios, and benchmark reporting implemented.
 
 **Reproducibility**: Simulation time, task streams, and deadline metrics are deterministic under fixed configurations and random seeds. Scheduler overhead is measured from actual wall-clock time and may vary across machines and runs.
+
+## Benchmark snapshot
+
+![Deadline Miss Rate under Emergency Overload](docs/assets/emergency_deadline_miss_rate.png)
+
+This synthetic deterministic benchmark compares Fixed, FIFO, and EDF scheduling policies under high-load and emergency overload scenarios. See [full benchmark results](docs/benchmark_results.md) for detailed metrics.
+
+Generate the report:
+
+```bash
+python -m pip install -e ".[benchmark]"
+python scripts/generate_benchmark_report.py
+```
 
 ## Research integrity and public release
 
