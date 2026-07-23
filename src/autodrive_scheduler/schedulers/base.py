@@ -19,3 +19,10 @@ class Scheduler(ABC):
     ) -> str:
         """Return the resource name selected for the task."""
 
+    def queue_priority(self, task: Task) -> float:
+        """Return the priority value for queue ordering. Lower values are served first.
+
+        Defaults to arrival time for FIFO behavior.
+        """
+        return task.arrival_ms
+

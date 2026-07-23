@@ -23,7 +23,7 @@ class SimulationRunner:
         self.env = simpy.Environment()
         capacities: dict[str, int] = scenario["devices"]  # type: ignore[assignment]
         self.simpy_resources = {
-            name: simpy.Resource(self.env, capacity=capacity)
+            name: simpy.PriorityResource(self.env, capacity=capacity)
             for name, capacity in capacities.items()
         }
         self.resource_states = {
@@ -46,7 +46,7 @@ class SimulationRunner:
         self.resource_states[resource_name].reserve(float(self.env.now), execution_ms)
 
         resource = self.simpy_resources[resource_name]
-        with resource.request() as request:
+        with resource.request(priority=self.scheduler.queue_priority(task)) as request:
             yield request
             start_ms = float(self.env.now)
             yield self.env.timeout(execution_ms)

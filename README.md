@@ -14,6 +14,7 @@ Autonomous-driving systems execute perception services with different priorities
 - Periodic workload generation with deterministic random seeds
 - Static fixed-mapping baseline
 - FIFO task ordering with earliest-finish resource selection
+- Non-preemptive EDF scheduler (Earliest Deadline First) within each device's wait queue
 - Deadline miss rate, response latency, throughput, and utilization metrics
 - Reproducible CSV and JSON result files
 - Unit tests for configuration, scheduling, and simulation
@@ -35,10 +36,22 @@ autodrive-sim \
 pytest -q
 ```
 
-Run both v0.1 baselines:
+Run Fixed/FIFO/EDF baselines:
 
 ```bash
 python scripts/run_baselines.py
+```
+
+Run high-load scenario:
+
+```bash
+python scripts/run_baselines.py --scenario configs/scenarios/high_load.yaml
+```
+
+Run emergency overload scenario:
+
+```bash
+python scripts/run_baselines.py --scenario configs/scenarios/emergency_overload.yaml
 ```
 
 ## Repository layout
@@ -59,6 +72,23 @@ docs/          Design notes and experiment protocol
 - `v0.3`: Deadline- and Resource-Aware Scheduler (DRAS) and ablations
 - `v0.4`: CPU/GPU model profiling and trace-driven experiments
 - `v1.0`: Complete paper experiments, documentation, and portfolio release
+
+**v0.2 progress**: EDF baseline, deterministic high-load/emergency scenarios, and benchmark reporting implemented.
+
+**Reproducibility**: Simulation time, task streams, and deadline metrics are deterministic under fixed configurations and random seeds. Scheduler overhead is measured from actual wall-clock time and may vary across machines and runs.
+
+## Benchmark snapshot
+
+![Deadline Miss Rate under Emergency Overload](docs/assets/emergency_deadline_miss_rate.png)
+
+This synthetic deterministic benchmark compares Fixed, FIFO, and EDF scheduling policies under high-load and emergency overload scenarios. See [full benchmark results](docs/benchmark_results.md) for detailed metrics.
+
+Generate the report:
+
+```bash
+python -m pip install -e ".[benchmark]"
+python scripts/generate_benchmark_report.py
+```
 
 ## Research integrity and public release
 

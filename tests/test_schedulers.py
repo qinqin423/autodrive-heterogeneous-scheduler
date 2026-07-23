@@ -1,5 +1,5 @@
 from autodrive_scheduler.models import ResourceState, ServiceSpec, Task
-from autodrive_scheduler.schedulers import FIFOScheduler, FixedScheduler
+from autodrive_scheduler.schedulers import EDFScheduler, FIFOScheduler, FixedScheduler
 
 
 def make_task() -> Task:
@@ -27,4 +27,24 @@ def test_fifo_scheduler_uses_earliest_predicted_finish() -> None:
         "gpu": ResourceState("gpu", 1, ready_times=[100.0]),
     }
     assert FIFOScheduler().choose_resource(make_task(), resources, 0.0) == "cpu"
+
+
+def test_edf_scheduler_queue_priority_equals_absolute_deadline() -> None:
+    service = ServiceSpec(
+        name="test",
+        priority=1,
+        deadline_ms=50.0,
+        preferred_resource="cpu",
+        execution_ms={"cpu": 10.0},
+    )
+    task = Task(task_id="test-0001", service=service, arrival_ms=100.0)
+    assert EDFScheduler().queue_priority(task) == 150.0
+
+
+def test_edf_scheduler_uses_earliest_predicted_finish() -> None:
+    resources = {
+        "cpu": ResourceState("cpu", 1, ready_times=[0.0]),
+        "gpu": ResourceState("gpu", 1, ready_times=[100.0]),
+    }
+    assert EDFScheduler().choose_resource(make_task(), resources, 0.0) == "cpu"
 

@@ -21,6 +21,9 @@ dependencies = [
 dev = [
   "pytest>=8,<10",
 ]
+benchmark = [
+  "matplotlib>=3.8,<4",
+]
 
 [project.scripts]
 autodrive-sim = "autodrive_scheduler.cli:main"
