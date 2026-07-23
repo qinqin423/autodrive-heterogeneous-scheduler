@@ -1,0 +1,8 @@
+devices:
+  cpu:
+    capacity: 2
+  gpu:
+    capacity: 1
+  npu:
+    capacity: 1
+

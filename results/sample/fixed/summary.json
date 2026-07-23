@@ -1,0 +1,18 @@
+{
+  "completed_tasks": 25,
+  "deadline_misses": 0,
+  "deadline_miss_rate": 0.0,
+  "mean_response_ms": 22.36,
+  "p95_response_ms": 62.0,
+  "throughput_tasks_per_s": 49.21259842519685,
+  "mean_scheduler_overhead_ms": 0.00045047999999999996,
+  "resource_utilization": {
+    "cpu": 0.11811023622047244,
+    "gpu": 0.6141732283464567,
+    "npu": 0.17913385826771652
+  },
+  "scenario": "smoke",
+  "scheduler": "fixed",
+  "configured_duration_ms": 500.0,
+  "observed_duration_ms": 508.0
+}

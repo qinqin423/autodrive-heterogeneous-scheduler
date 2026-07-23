@@ -1,0 +1,28 @@
+name: smoke
+description: Small deterministic workload used for v0.1 validation.
+duration_ms: 500
+random_seed: 42
+devices_file: ../devices.yaml
+services_file: ../services.yaml
+workloads:
+  - service: object_detection
+    start_ms: 0
+    period_ms: 100
+    jitter_ms: 0
+  - service: monocular_3d_detection
+    start_ms: 10
+    period_ms: 150
+    jitter_ms: 0
+  - service: object_tracking
+    start_ms: 25
+    period_ms: 50
+    jitter_ms: 0
+  - service: lane_detection
+    start_ms: 40
+    period_ms: 100
+    jitter_ms: 0
+  - service: emergency_obstacle_detection
+    start_ms: 220
+    period_ms: 1000
+    jitter_ms: 0
+

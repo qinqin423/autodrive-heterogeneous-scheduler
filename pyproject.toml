@@ -1,0 +1,34 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "autodrive-heterogeneous-scheduler"
+version = "0.1.0"
+description = "Discrete-event simulation for heterogeneous autonomous-driving AI service scheduling"
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "MIT"}
+authors = [
+  {name = "Qin Qin"}
+]
+dependencies = [
+  "PyYAML>=6.0,<7",
+  "simpy>=4.1,<5",
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=8,<10",
+]
+
+[project.scripts]
+autodrive-sim = "autodrive_scheduler.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+addopts = "-ra"
+testpaths = ["tests"]
+

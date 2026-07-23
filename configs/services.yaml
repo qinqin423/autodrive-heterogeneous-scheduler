@@ -1,0 +1,45 @@
+services:
+  object_detection:
+    priority: 3
+    deadline_ms: 80
+    preferred_resource: gpu
+    execution_ms:
+      cpu: 110
+      gpu: 24
+      npu: 18
+
+  monocular_3d_detection:
+    priority: 4
+    deadline_ms: 120
+    preferred_resource: gpu
+    execution_ms:
+      cpu: 240
+      gpu: 48
+      npu: 42
+
+  object_tracking:
+    priority: 3
+    deadline_ms: 50
+    preferred_resource: cpu
+    execution_ms:
+      cpu: 12
+      gpu: 8
+
+  lane_detection:
+    priority: 2
+    deadline_ms: 100
+    preferred_resource: npu
+    execution_ms:
+      cpu: 90
+      gpu: 22
+      npu: 16
+
+  emergency_obstacle_detection:
+    priority: 5
+    deadline_ms: 40
+    preferred_resource: npu
+    execution_ms:
+      cpu: 75
+      gpu: 16
+      npu: 11
+
