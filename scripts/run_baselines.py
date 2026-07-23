@@ -3,7 +3,7 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
-from autodrive_scheduler.schedulers import FIFOScheduler, FixedScheduler
+from autodrive_scheduler.schedulers import EDFScheduler, FIFOScheduler, FixedScheduler
 from autodrive_scheduler.simulator import run_from_file
 
 
@@ -11,10 +11,12 @@ PROJECT_ROOT = Path(__file__).resolve().parents[1]
 SCENARIO = PROJECT_ROOT / "configs" / "scenarios" / "smoke.yaml"
 RESULTS_ROOT = PROJECT_ROOT / "results" / "sample"
 
+_SCHEDULERS = (FixedScheduler(), FIFOScheduler(), EDFScheduler())
+
 
 def main() -> None:
     summaries = []
-    for scheduler in (FixedScheduler(), FIFOScheduler()):
+    for scheduler in _SCHEDULERS:
         summary = run_from_file(
             SCENARIO,
             scheduler,

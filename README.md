@@ -14,6 +14,7 @@ Autonomous-driving systems execute perception services with different priorities
 - Periodic workload generation with deterministic random seeds
 - Static fixed-mapping baseline
 - FIFO task ordering with earliest-finish resource selection
+- Non-preemptive EDF scheduler (Earliest Deadline First) within each device's wait queue
 - Deadline miss rate, response latency, throughput, and utilization metrics
 - Reproducible CSV and JSON result files
 - Unit tests for configuration, scheduling, and simulation
@@ -59,6 +60,8 @@ docs/          Design notes and experiment protocol
 - `v0.3`: Deadline- and Resource-Aware Scheduler (DRAS) and ablations
 - `v0.4`: CPU/GPU model profiling and trace-driven experiments
 - `v1.0`: Complete paper experiments, documentation, and portfolio release
+
+**v0.2 progress**: EDF baseline implemented; overload scenarios and benchmark reporting are planned.
 
 ## Research integrity and public release
 
