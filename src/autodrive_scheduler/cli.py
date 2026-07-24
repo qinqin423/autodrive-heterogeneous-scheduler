@@ -4,7 +4,7 @@ import argparse
 import json
 from pathlib import Path
 
-from autodrive_scheduler.schedulers import EDFScheduler, FIFOScheduler, FixedScheduler
+from autodrive_scheduler.schedulers import DRASScheduler, EDFScheduler, FIFOScheduler, FixedScheduler
 from autodrive_scheduler.simulator import run_from_file
 
 
@@ -12,6 +12,7 @@ _SCHEDULER_MAP = {
     "fixed": FixedScheduler,
     "fifo": FIFOScheduler,
     "edf": EDFScheduler,
+    "dras": DRASScheduler,
 }
 
 

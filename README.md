@@ -17,6 +17,7 @@ Autonomous-driving systems execute perception services with different priorities
 - Static fixed-mapping baseline
 - FIFO task ordering with earliest-finish resource selection
 - Non-preemptive EDF scheduler (Earliest Deadline First) within each device's wait queue
+- DRAS (Deadline- and Resource-Aware Scheduler) v0.3 first version: inherits EDF queue ordering and adds a load- and deadline-aware resource selection score
 - Deadline miss rate, response latency, throughput, and utilization metrics
 - Reproducible CSV and JSON result files
 - Unit tests for configuration, scheduling, and simulation
@@ -76,6 +77,8 @@ docs/          Design notes and experiment protocol
 - `v1.0`: Complete paper experiments, documentation, and portfolio release
 
 **v0.2 progress**: EDF baseline, deterministic high-load/emergency scenarios, and benchmark reporting implemented.
+
+**v0.3 progress**: DRAS first version implemented (inherits EDF queue ordering, adds a deadline- and load-aware resource selection score). Performance validation against EDF is planned via ablation experiments. See [DRAS design](docs/dras_design.md).
 
 **Reproducibility**: Simulation time, task streams, and deadline metrics are deterministic under fixed configurations and random seeds. Scheduler overhead is measured from actual wall-clock time and may vary across machines and runs.
 
